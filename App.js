@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
@@ -9,7 +9,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [loaded, error] = useFonts({
     'poppins': require('./assets/fonts/Poppins-Medium.ttf'),
-    'light': require('./assets/fonts/Poppins-ExtraLight.ttf'),
+    'light': require('./assets/fonts/Poppins-Light.ttf'),
   });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function App() {
 
       <LinearGradient
         // Button Linear Gradient
-        colors={['#155576', '#155576b3', '#46201B',]}
+        colors={['#155576b3', '#46201B',]}
         style={styles.bemvindo}>
         <Text style={styles.text}>BEM VINDO!</Text>
         <Text style={styles.text2}>Faça login ou crie sua conta</Text>
@@ -51,6 +51,10 @@ export default function App() {
       // onChangeText={setEmail}
       />
 
+      <TouchableOpacity style={styles.botao}>
+        <Text style={styles.botaoTexto}>ACESSAR</Text>
+      </TouchableOpacity>
+
     </View>
 
   );
@@ -66,21 +70,20 @@ const styles = StyleSheet.create({
   bemvindo: {
     paddingTop: '20%',
     paddingBottom: '10%',
-    height: '40%',
+    height: '35%',
     width: '100%',
-    
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomRightRadius: 82,
     borderBottomLeftRadius: 82,
-      shadowColor: "#fff",
-    shadowOffset: {
-      width: 3,
-      height: 3, 
-    },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
+    //   shadowColor: "#fff",
+    // shadowOffset: {
+    //   width: 3,
+    //   height: 3, 
+    // },
+    // shadowOpacity: 0.8,
+    // shadowRadius: 2,
+    // elevation: 5,
   },
   button: {
     padding: 15,
@@ -98,28 +101,38 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     fontStyle: 'light',
-    marginTop:'10%',
+    marginTop: '10%',
   },
   input: {
     backgroundColor: '#161616',
     width: '85%',
     borderWidth: 1,
-    height: '10%',
+    height: '9%',
     color: 'white',
     borderBottomColor: '#ddd',
     borderRightColor: 'transparent',
     borderLeftColor: 'transparent',
     borderTopColor: 'transparent',
-    marginTop: '20%',
+    marginTop: '12%',
     fontStyle: 'poppins',
-    fontSize: 14,
-  //   shadowColor: "#fff",
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 8, 
-  //   },
-  //   shadowOpacity: 0.3,
-  //   shadowRadius: 0,
-  //   elevation: 8,
+    fontSize: 12,
+  },
+
+  botao:{
+    width: '70%',
+    borderWidth: 1,
+    height: '9%',
+    borderColor: '#ddd',
+    backgroundColor: 'rgba(217,217,217,0.5)',
+    borderRadius: 37,
+    marginTop: '15%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  botaoTexto:{
+    color: 'white',
+    fontSize: 15,
+    fontStyle: 'poppins',
   }
 });
