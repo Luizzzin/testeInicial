@@ -9,7 +9,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [loaded, error] = useFonts({
     'poppins': require('./assets/fonts/Poppins-Medium.ttf'),
-    'light': require('./assets/fonts/Poppins-Thin.ttf'),
+    'light': require('./assets/fonts/Poppins-ExtraLight.ttf'),
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function App() {
         // Button Linear Gradient
         colors={['#155576', '#155576b3', '#46201B',]}
         style={styles.bemvindo}>
-        <Text style={styles.text}>Bem Vindo</Text>
+        <Text style={styles.text}>BEM VINDO!</Text>
         <Text style={styles.text2}>Faça login ou crie sua conta</Text>
       </LinearGradient>
 
@@ -65,12 +65,22 @@ const styles = StyleSheet.create({
   },
   bemvindo: {
     paddingTop: '20%',
-    height: '35%',
+    paddingBottom: '10%',
+    height: '40%',
     width: '100%',
+    
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomRightRadius: 82,
     borderBottomLeftRadius: 82,
+      shadowColor: "#fff",
+    shadowOffset: {
+      width: 3,
+      height: 3, 
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
   },
   button: {
     padding: 15,
@@ -79,7 +89,7 @@ const styles = StyleSheet.create({
   },
   text: {
     backgroundColor: 'transparent',
-    fontSize: 42,
+    fontSize: 40,
     fontStyle: 'poppins',
     color: '#fff',
   },
@@ -88,6 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
     fontStyle: 'light',
+    marginTop:'10%',
   },
   input: {
     backgroundColor: '#161616',
