@@ -3,6 +3,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
+import { auth, firestore } from './firebaseConfig';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { collection, addDoc, getDocs, query, where, serverTimestamp, deleteDoc, doc } from 'firebase/firestore';
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -21,6 +25,9 @@ export default function App() {
   if (!loaded && !error) {
     return null;
   }
+  
+
+
 
   return (
     <View style={styles.container}>
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
 
-  botao:{
+  botao: {
     width: '70%',
     borderWidth: 1,
     height: '9%',
@@ -130,7 +137,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  botaoTexto:{
+  botaoTexto: {
     color: 'white',
     fontSize: 15,
     fontStyle: 'poppins',
