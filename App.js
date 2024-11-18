@@ -127,14 +127,22 @@ const styles = StyleSheet.create({
 
   botao: {
     width: '70%',
-    borderWidth: 1,
-    height: '9%',
+    height: '7%',
+    borderWidth:0.4,
     borderColor: '#ddd',
-    backgroundColor: 'rgba(217,217,217,0.5)',
-    borderRadius: 37,
+    backgroundColor: 'rgba(119,119,119,1)',
+    borderRadius: 25,
     marginTop: '15%',
     alignItems: 'center',
     justifyContent: 'center',
+      shadowColor: "#fff",
+    shadowOffset: {
+      width: 4,
+      height: 4, 
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    elevation: 4,
   },
 
   botaoTexto: {
