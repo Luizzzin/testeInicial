@@ -1,9 +1,9 @@
-import { ScrollView, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
-import { auth, firestore} from './firebaseConfig';
+import { auth,} from './firebaseConfig';
 import {signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 
 
@@ -25,6 +25,8 @@ export default function App() {
     }
   }, [loaded, error]);
 
+  //-------------------------------------
+
   useEffect(() => {
     const atualizaUsuario = onAuthStateChanged(auth, (user) => {
       setUsuario(user);
@@ -33,13 +35,17 @@ export default function App() {
   }, []);
 
   const entrar = () => {
+    if (!email.trim() || !senha.trim()) {
+      alert('Por favor, preencha ambos os campos: email e senha.');
+      return;
+    }
     signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         setUsuario(userCredential.user);
         setEmail('');
         setSenha('');
       })
-      .catch((error) => alert('Erro ao fazer login: Senha ou email incorretos '));
+      .catch((error) => alert('Erro ao fazer login: Senha ou email incorretos' + error.message));
   };
 
   const sair = () => {
